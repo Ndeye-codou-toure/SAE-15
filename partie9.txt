@@ -1,0 +1,6 @@
+Tue Jan 25 21:50:11 2022 Taux occupation: 40.48%
+Tue Jan 25 21:50:30 2022 Taux occupation: 40.48%
+Tue Jan 25 21:50:48 2022 Taux occupation: 40.48%
+Tue Jan 25 21:51:09 2022 Taux occupation: 40.46%
+Tue Jan 25 21:51:27 2022 Taux occupation: 40.45%
+Tue Jan 25 21:51:46 2022 Taux occupation: 40.44%

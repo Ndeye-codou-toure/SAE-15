@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SAE 15 (mini-projet).md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="etude-de-lutilisation-des-parkings-de-la-ville-de-montpellier">Etude de l'utilisation des parkings de la ville de Montpellier</h1>
+<p>Nous voulons nous intéresser sur:</p>
+<ul>
+<li>Le taux d’occupation des parkings voiture.</li>
+<li>Le taux d’occupation des parkings vélos.</li>
+<li>Le bon fonctionnement du relais voiture / vélo.</li>
+<li>La relation entre l'usage des parkings voiture et l'usage des parkings velo</li>
+</ul>
+<p>Pour ce faire, nous allons utiliser les données extraites du site <em><strong>open data de Montpellier</strong></em> et faire des programmes permettant d'aboutir à nos fins.</p>
+<blockquote>
+<p><em>Afin d’envoyer une requête http pour récupérer les données de tous les parkings, nous utiliserons la librairie <em><strong>« requests »</strong></em></em></p>
+</blockquote>
+<pre class="hljs"><code><div>import requests
+ 
+ 
+PAR=[<span class="hljs-string">'FR_MTP_ANTI'</span>,<span class="hljs-string">'FR_MTP_COME'</span>,<span class="hljs-string">'FR_MTP_CORU'</span>,<span class="hljs-string">'FR_MTP_EURO'</span>,<span class="hljs-string">'FR_MTP_FOCH'</span>,<span class="hljs-string">'FR_MTP_GAMB'</span>,<span class="hljs-string">'FR_MTP_GARE'</span>,<span class="hljs-string">'FR_MTP_TRIA'</span>,<span class="hljs-string">'FR_MTP_ARCT'</span>,
+<span class="hljs-string">'FR_MTP_PITO'</span>,<span class="hljs-string">'FR_MTP_CIRC'</span>,<span class="hljs-string">'FR_MTP_SABI'</span>,<span class="hljs-string">'FR_MTP_GARC'</span>,<span class="hljs-string">'FR_MTP_SABL'</span>,<span class="hljs-string">'FR_MTP_MOSS'</span>,<span class="hljs-string">'FR_STJ_SJLC'</span>,<span class="hljs-string">'FR_MTP_MEDC'</span>,<span class="hljs-string">'FR_MTP_OCCI'</span>,<span class="hljs-string">'FR_CAS_VICA'</span>,<span class="hljs-string">'FR_MTP_GA109'</span>,<span class="hljs-string">'FR_MTP_GA250'</span>,<span class="hljs-string">'FR_CAS_CDGA'</span>,<span class="hljs-string">'FR_MTP_ARCE'</span>,<span class="hljs-string">'FR_MTP_POLY'</span>]
+ 
+<span class="hljs-keyword">for</span> i in PAR:
+    x=requests.get(f<span class="hljs-string">'https://data.montpellier3m.fr/sites/default/files/ressources/{i}.xml'</span>)
+    <span class="hljs-keyword">print</span>(x.text)
+ 
+</div></code></pre>
+<blockquote>
+<p><em><strong>Ceci est un programme  qui permet le suivi de l’occupation de tous les parkings de Montpellier et en affichant à la fin le pourcentage de places libres  et de places occupées de toute la ville.</strong></em></p>
+</blockquote>
+<pre class="hljs"><code><div>import requests
+from lxml import etree
+PAR=[<span class="hljs-string">'FR_MTP_ANTI'</span>,<span class="hljs-string">'FR_MTP_COME'</span>,<span class="hljs-string">'FR_MTP_CORU'</span>,<span class="hljs-string">'FR_MTP_EURO'</span>,<span class="hljs-string">'FR_MTP_FOCH'</span>,<span class="hljs-string">'FR_MTP_GAMB'</span>,<span class="hljs-string">'FR_MTP_GARE'</span>,<span class="hljs-string">'FR_MTP_TRIA'</span>,<span class="hljs-string">'FR_MTP_ARCT'</span>,
+<span class="hljs-string">'FR_MTP_PITO'</span>,<span class="hljs-string">'FR_MTP_CIRC'</span>,<span class="hljs-string">'FR_MTP_SABI'</span>,<span class="hljs-string">'FR_MTP_GARC'</span>,<span class="hljs-string">'FR_MTP_SABL'</span>,<span class="hljs-string">'FR_MTP_MOSS'</span>,<span class="hljs-string">'FR_STJ_SJLC'</span>,<span class="hljs-string">'FR_MTP_MEDC'</span>,<span class="hljs-string">'FR_MTP_OCCI'</span>,<span class="hljs-string">'FR_CAS_VICA'</span>,<span class="hljs-string">'FR_MTP_GA109'</span>,<span class="hljs-string">'FR_MTP_GA250'</span>,<span class="hljs-string">'FR_CAS_CDGA'</span>,<span class="hljs-string">'FR_MTP_ARCE'</span>,<span class="hljs-string">'FR_MTP_POLY'</span>]
+ 
+y=<span class="hljs-number">0</span>
+w=<span class="hljs-number">0</span>
+p=<span class="hljs-number">0</span>
+<span class="hljs-keyword">for</span> i in PAR:
+    x=requests.get(f<span class="hljs-string">'https://data.montpellier3m.fr/sites/default/files/ressources/{i}.xml'</span>)
+    f1=open(f<span class="hljs-string">'{i}.txt'</span>,<span class="hljs-string">"w"</span>, encoding=<span class="hljs-string">'utf8'</span>)
+    f1.write(x.text)
+    f1.close()
+    tree = etree.parse(f<span class="hljs-string">"{i}.txt"</span>)   <span class="hljs-comment">#retirer les donnees</span>
+    <span class="hljs-keyword">for</span> user in tree.xpath(<span class="hljs-string">"Name"</span>):    <span class="hljs-comment">#extrait les données de name</span>
+        <span class="hljs-keyword">print</span>(<span class="hljs-string">'Nom du parking :'</span>,user.text)
+    <span class="hljs-keyword">for</span> user1 in tree.xpath(<span class="hljs-string">"Total"</span>):  
+        <span class="hljs-keyword">print</span>(<span class="hljs-string">'Places totales :'</span>,user1.text)
+    <span class="hljs-keyword">for</span> user2 in tree.xpath(<span class="hljs-string">"Free"</span>):
+        <span class="hljs-keyword">print</span>(<span class="hljs-string">'Nombre de places libres :'</span>,user2.text)
+        x=int((user1.text))-int((user2.text))
+        <span class="hljs-keyword">print</span>(<span class="hljs-string">'Nombres de places occupées:'</span> ,x)
+    y=int((user1.text))+ y
+    w=int((user2.text))+w
+    p=int((x))+ p
+<span class="hljs-comment">#print('Nombres de places occupées dans toute la ville:' ,x)</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'Nombre de Places totales de toute la ville:'</span> ,y)
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'Nombres de places libres de toute la ville:'</span> ,w)
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'Nombre de place occupées dans toute la ville:'</span> ,p)
+pour=int((w))*<span class="hljs-number">100</span>/int(y)
+opour=int((p))*<span class="hljs-number">100</span>/int(y)
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'Pourcentage de places libres de toute la ville'</span> ,round(pour,<span class="hljs-number">2</span>) ,<span class="hljs-string">'%'</span>)
+<span class="hljs-keyword">print</span>(<span class="hljs-string">'Pourcentage de places occupées de toute la ville'</span> ,round(opour,<span class="hljs-number">2</span>) ,<span class="hljs-string">'%'</span>)
+</div></code></pre>
+<p>Voici les résultats du meme programme mais qui sont lancés à des heures differents.<br></p>
+<blockquote>
+<p>Celui ci est lancé à 15h:
+<img src="occupation 15h.png"></p>
+</blockquote>
+<blockquote>
+<p>Celui ci est lancé à 00h:
+<img src="occupation 00.png"></p>
+</blockquote>
+<p><em>On voit une nette difference entre les 2 résultats car évidemment que pendant la nuit que ça soit les travailleurs, ce qui font des courses etc presque tout le monde rentre chez eux et donc la ville n'est plus en mouvement et conséquence,les parkings ne sont plus occupés.</em></p>
+<h2 id="bref-on-va-maintenant-afficher-notre-programme-g%C3%A9n%C3%A9ral-qui-fait-%C3%A0-la-fois"><em><strong>Bref on va maintenant afficher notre programme général qui fait à la fois:</strong></em></h2>
+<blockquote>
+<ul>
+<li>Une requête https et récupère les fichiers xml qui se trouve dans la page, les enregistre dans un fichier.<br></li>
+<li>Permettre à l’utilisateur de choisir la période d’échantillonnage Te et la durée de l’acquisition.</li>
+<li>Récupérer les données précise avec la librairie “parser”<br></li>
+<li>Calcule le taux d’occupation des parkings voitures et vélos sur un intervalle en affichant l’heure, la minute et la seconde dans un autre fichier.<br></li>
+<li>Et enfin, qui va calculer la corrélation et la covariance qu’il ya entre les parkings vélos et voitures</li>
+</ul>
+</blockquote>
+<pre class="hljs"><code><div>import requests
+from lxml import etree
+import time
+parkings=[<span class="hljs-string">'FR_MTP_ANTI'</span>,<span class="hljs-string">'FR_MTP_COME'</span>,<span class="hljs-string">'FR_MTP_CORU'</span>,<span class="hljs-string">'FR_MTP_EURO'</span>,<span class="hljs-string">'FR_MTP_FOCH'</span>,<span class="hljs-string">'FR_MTP_GAMB'</span>,<span class="hljs-string">'FR_MTP_GARE'</span>,<span class="hljs-string">'FR_MTP_TRIA'</span>,<span class="hljs-string">'FR_MTP_ARCT'</span>,<span class="hljs-string">'FR_MTP_PITO'</span>,<span class="hljs-string">'FR_MTP_CIRC'</span>,<span class="hljs-string">'FR_MTP_SABI'</span>,<span class="hljs-string">'FR_MTP_GARC'</span>,<span class="hljs-string">'FR_MTP_SABL'</span>,<span class="hljs-string">'FR_MTP_MOSS'</span>,<span class="hljs-string">'FR_STJ_SJLC'</span>,<span class="hljs-string">'FR_MTP_MEDC'</span>,<span class="hljs-string">'FR_MTP_OCCI'</span>,<span class="hljs-string">'FR_CAS_VICA'</span>,<span class="hljs-string">'FR_MTP_GA109'</span>,<span class="hljs-string">'FR_MTP_GA250'</span>,<span class="hljs-string">'FR_CAS_CDGA'</span>,<span class="hljs-string">'FR_MTP_ARCE'</span>,<span class="hljs-string">'FR_MTP_POLY'</span>]
+Toville=<span class="hljs-number">0</span> <span class="hljs-comment">#Le nombre total des parkings de toute la ville</span>
+FrVille=<span class="hljs-number">0</span> <span class="hljs-comment">#Le nombre total des parkings libre de toute la ville</span>
+ToVelo=<span class="hljs-number">0</span> <span class="hljs-comment">#Le nombre total des places du velo de toute la ville</span>
+AvVelo=<span class="hljs-number">0</span> <span class="hljs-comment">#le nombre total des places occupées du vélo de toute la ville</span>
+<span class="hljs-comment"># Pour saisir la période et la durée</span>
+period=int(input(<span class="hljs-string">"Période(min):"</span>))
+period=period*<span class="hljs-number">60</span>
+duration=int(input(<span class="hljs-string">"duration(sec):"</span>))
+t=int(period/duration)
+<span class="hljs-comment"># t est le nombre de fois que ce programme doit être exécuté.</span>
+<span class="hljs-keyword">for</span> p in range(t):
+    <span class="hljs-keyword">for</span> x in parkings: <span class="hljs-comment">#La liste "parkings" contient les noms des fichiers de chaque zone. On fait une boucle pour récupérer des données de chaque zone.</span>
+        <span class="hljs-comment">#Récupérer les données et les mettre dans un nouveau fichier</span>
+        data=requests.get(f<span class="hljs-string">"https://data.montpellier3m.fr/sites/default/files/ressources/{x}.xml"</span>)
+        f1=open(f<span class="hljs-string">"{x}.txt"</span>,<span class="hljs-string">"w"</span>,encoding=<span class="hljs-string">'utf8'</span>)
+        f1.write(data.text)
+        f1.close()
+        <span class="hljs-comment">#trier des données et choisir le nombre des places libres et des places totales.</span>
+        tree=etree.parse(f<span class="hljs-string">"{x}.txt"</span>)
+        a=<span class="hljs-number">0</span>
+        b=<span class="hljs-number">0</span>
+        <span class="hljs-keyword">for</span> user in tree.xpath(<span class="hljs-string">"Total"</span>):
+            total=int(user.text)
+            a=a+total
+        <span class="hljs-keyword">for</span> user in tree.xpath(<span class="hljs-string">"Free"</span>):
+            libre=int(user.text)
+            b=b+libre
+        <span class="hljs-comment"># ajouter des nombre dans le valeur du "nombre total". C'est pour obtenir la somme de tous les parkings et tous les parkings libres</span>
+        Toville=Toville+a
+        FrVille=FrVille+b
+    <span class="hljs-comment"># Récupérer des données de places du vélo</span>
+    data2=requests.get(<span class="hljs-string">"https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_VELOMAG.xml"</span>)
+    f3=open(<span class="hljs-string">"VELO.txt"</span>,<span class="hljs-string">"w"</span>,encoding=<span class="hljs-string">'utf8'</span>)
+    f3.write(data2.text)
+    f3.close()
+    <span class="hljs-comment"># Trier</span>
+    tree2=etree.parse(<span class="hljs-string">"VELO.txt"</span>)
+    <span class="hljs-keyword">for</span> user in tree2.xpath(<span class="hljs-string">'//si/@av'</span>):
+        av=int(user)
+        AvVelo=AvVelo+av
+    <span class="hljs-keyword">for</span> user in tree2.xpath(<span class="hljs-string">'//si/@to'</span>):
+        to=int(user)
+        ToVelo=ToVelo+to
+    PourcentVelo=AvVelo/ToVelo <span class="hljs-comment"># le valeur : Places occupées du vélo / Places total du vélo</span>
+    PercentVoiture=FrVille/Toville <span class="hljs-comment"># le valeur : Parkings libres/ Parkings total</span>
+    PercentVoiture=<span class="hljs-number">1</span>-PercentVoiture <span class="hljs-comment"># pour obtenir le taux d'occupation de voiture</span>
+    temps=time.time()
+    temps=time.ctime(temps)
+    t=temps.split(<span class="hljs-string">' '</span>)
+    f2=open(<span class="hljs-string">"Data.txt"</span>,<span class="hljs-string">"a"</span>,encoding=<span class="hljs-string">'utf8'</span>)
+    f2.write(f<span class="hljs-string">"{t[3]}    {round(PercentVoiture*100, 2)}%    {round(PourcentVelo*100, 2)}%"</span>)
+    f2.write(<span class="hljs-string">'\n'</span>)
+    f2.close()
+    time.sleep(duration)
+</div></code></pre>
+<blockquote>
+<p>Ici, nous avons d’abord créé un objet de réponse HTTP en envoyant une requête HTTP à l’URL. Le contenu de la réponse contient maintenant les données du fichier XML que nous enregistrons sous le nom data.text dans notre répertoire local.<br></p>
+</blockquote>
+<p>Dans notre programme notre durée d'acquisition est de 5 heures et la période d'échantillonnage correspond à 10 c'est-à-dire qu'il récupère le taux d'occupation des parkings chaque 10 minutes pendant 5 heures de temps.</p>
+<p>Ce fichier data contient les pourcentages d'occupation:
+
+
+<img src= "capturedata.png" height=500px width=500px></p>
+<h2 id="pourcentage">Pourcentage</h2>
+<p>Comme le programme au-dessus avait calculé le taux d’occupation des parkings voitures et vélos sur un intervalle et l'avait enregistré sur un fichier.<br> Maintenant ceci va nous permettre de récupérer tous les pourcentages et de calculer la corrélation et la covariance.</p>
+<pre class="hljs"><code><div>f4=open(<span class="hljs-string">'Data.txt'</span>,<span class="hljs-string">'r'</span>, encoding=<span class="hljs-string">"utf8"</span>)
+lines=f4.readlines()
+f4.close()
+Lvoiture=[]
+Lvelo=[]
+ 
+<span class="hljs-keyword">for</span> <span class="hljs-keyword">do</span> in lines:
+    L=<span class="hljs-keyword">do</span>.split(<span class="hljs-string">'   '</span>)
+    x=float(L[<span class="hljs-number">1</span>].strip(<span class="hljs-string">'%'</span>))
+    y=float(L[<span class="hljs-number">2</span>].strip(<span class="hljs-string">'%\n'</span>))
+    Lvoiture.append(x)
+    Lvelo.append(y)
+<span class="hljs-keyword">print</span>(Lvoiture,Lvelo)
+<span class="hljs-comment"># Lvoiture est la liste des pourcentages de voiture et Lvelo est celle de velo</span>
+   
+<span class="hljs-comment"># Covariance</span>
+somme=<span class="hljs-number">0</span>
+<span class="hljs-keyword">for</span> x in range(len(Lvoiture)):
+    a=Lvoiture[x]-moyenne1(Lvoiture)
+    b=Lvelo[x]-moyenne2(Lvelo)
+    c=a*b
+    somme=somme+c
+cov=somme/len(Lvoiture)
+ 
+ 
+<span class="hljs-comment"># Corrélation</span>
+Cor=cov/sqrt(sigma(Lvoiture)*sigma(Lvelo))
+<span class="hljs-keyword">print</span>(<span class="hljs-string">"Covariance:"</span>,cov,<span class="hljs-string">"corrélation:"</span>,Cor)
+ 
+</div></code></pre>
+<h2 id="covariance-et-corr%C3%A9lation">Covariance et Corrélation</h2>
+<p>Le coefficient de corrélation est un indice de mesure de l’intensité d’un lien qui peut exister entre deux variables. <br>Le coefficient de corrélation est basé sur la covariance, c’est pourquoi on l'a calculé en premier.
+On a un coefficient de corrélation de -0,8 cette valeur correspond à une valeur qui croît à mesure que la première décroît.<br>
+On peut donc dire qu'elles sont fortement corrélées mais attention cela ne veut pas forcément dire qu’il y a une relation de causalité. Mais le résultat est négatif, on déduit qu’ils évoluent inversement.</p>
+<blockquote>
+<p>Voici ce que nous avons obtenu comme covariance et corrélation:</p>
+</blockquote>
+<img src="relation.png">
+<p>Pour plus d'éclaircissement, allons voir leurs courbes d’évolution.</p>
+<h2 id="gnuplot">GNUPLOT</h2>
+<p>Ceci est un logiciel interactif en ligne de commande qui sert à produire des représentations graphiques en deux ou trois dimensions. <br>
+Nous l'avons installé et il ne reste plus qu'à lui donner un programme pour qu'il nous trace l'évolution du taux d'occupation en fonction du temps
+Voici le programme:</p>
+<pre class="hljs"><code><div>set terminal png size <span class="hljs-number">800</span>,<span class="hljs-number">600</span>
+set output <span class="hljs-string">'image.png'</span>
+set key inside bottom right
+set autoscale
+set xlabel <span class="hljs-string">'temps'</span>
+set xdata time
+set timefmt <span class="hljs-string">"%H:%M:%S"</span>
+set format x <span class="hljs-string">"%H:%M"</span>
+set ylabel <span class="hljs-string">'Le taux d occupation'</span>
+set title <span class="hljs-string">"Evolution du taux d occupation"</span>
+plot <span class="hljs-string">"Data.txt"</span> using <span class="hljs-number">1</span>:<span class="hljs-number">2</span> title <span class="hljs-string">'Voiture'</span> with linespoints, <span class="hljs-string">"Data.txt"</span> using <span class="hljs-number">1</span>:<span class="hljs-number">3</span> title <span class="hljs-string">'Velo'</span> with linespoints
+</div></code></pre>
+<blockquote>
+<p>Voici l'image qu'il a généré:</p>
+</blockquote>
+<img src="image.png">
+<img src="covar.jpg">
+<p>Maintenant nous retrouvons exactement ce qu'on avait interpréter sur la corrélation. On voit que lorsque le taux d'occupation des parkings voiture tend à decroitre, celui des vélos augmente progressivement.</p>
+<h2 id="relation">Relation</h2>
+<ul>
+<li>Comme la plupart des gens travaillent dans le centre-ville pendant la journée, leurs voitures sont garées dans ces parkings, qui ont un taux d'occupation élevé.<br></li>
+<li>Et comme il est plus facile de se déplacer en vélo dans le centre-ville, l'utilisation du vélo est plus élevée, donc le taux d'occupation des places vélo est faible.</li>
+<li>Mais en fin de journée, les gens commencent à rentrer chez eux, de sorte que l'utilisation des voitures commence à augmenter et le taux d'occupation des parkings voitures diminue et celui des vélos commencent à croître.<br></li>
+<li>Ceci a aussi un impact sur l'utilisation des vélos, donc le taux d'occupation des places vélo augmente légèrement.<br><br></li>
+</ul>
+<blockquote>
+<p><em>On voit que la différence entre l’usage des vélos et des voitures est particulièrement sensible aux heures de grande affluence ou le vélo prend définitivement  le large.</em><br>
+<em>Un avantage encore accru par la multiplication des aménagements cyclables liés à la crise sanitaire. Les automobilistes ne disposant pas de parking devront en plus composer avec la recherche d’une place de stationnement. Souvent une véritable quête au long cours et donc le vélo va prendre le relais.</em></p>
+</blockquote>
+
+</body>
+</html>
